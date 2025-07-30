@@ -5,13 +5,21 @@ import { assets } from "../../assets/assets";
 export default function GeminiChat() {
   const [input, setInput] = useState("");
 
+  const onChangeHandler = (e) => {
+    setInput(e.target.value);
+  };
+
   return (
     <div className="GeminiChat">
       <div className="topContainer">
-        <h1>Gemini</h1>
-        <div className="model">
-          <span>2.5 Pro</span> <img src={assets.down} alt="Down arrow" />
+        <div>
+          <h1>Gemini</h1>
+          <div className="model">
+            <span>2.5 Pro</span> <img src={assets.down} alt="Down arrow" />
+          </div>
         </div>
+
+        <img className="profilePic" src={assets.user} alt="Gemini Account" />
       </div>
 
       <div className="middleContainer">
@@ -24,15 +32,20 @@ export default function GeminiChat() {
         <div className="chatBox">
           <form>
             <input
-              type="text"
               placeholder="Ask Gemini"
-              onChange={(e) => {
-                setInput(e.target.value);
-                console.log(e.target.value);
-              }}
+              onChange={onChangeHandler}
+              value={input}
             />
-            <div title="Submit" className="submit">
-              <img src={assets.send} alt="Submit" />
+
+            <div
+              style={input ? { backgroundColor: "#e4e8ed" } : null}
+              className="buttons"
+            >
+              {input ? (
+                <img src={assets.send} alt="Submit" title="Submit" />
+              ) : (
+                <img src={assets.mic} alt="Microphone" title="Use microphone" />
+              )}
             </div>
           </form>
         </div>
