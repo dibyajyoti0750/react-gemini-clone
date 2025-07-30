@@ -1,0 +1,105 @@
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem;
+  min-height: 100vh;
+  width: 22.5rem;
+  background-color: #f0f4f9;
+  color: #575b5f;
+  opacity: 1;
+}
+.Sidebar.collapsed {
+  opacity: 0.6;
+  width: 5rem;
+}
+.Sidebar img {
+  cursor: pointer;
+}
+
+/* Top Section */
+.Sidebar .top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+.icon-container img {
+  width: 1.2rem;
+}
+.icon-container:hover {
+  background-color: #e4e8ed;
+}
+
+/* Top Secondary */
+.Sidebar .secondary {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+.Sidebar .secondary .newChat,
+.exploreGems {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.Sidebar .secondary img {
+  width: 1.2rem;
+}
+
+/* Middle Section */
+.Sidebar .recent {
+  flex-grow: 1;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 1.2rem;
+  height: 69vh;
+  overflow-y: auto;
+}
+.Sidebar .recent::-webkit-scrollbar {
+  display: none;
+}
+.Sidebar .recent .recentTitle {
+  font-weight: 600;
+  color: #727676;
+  margin: 1rem 0;
+}
+.Sidebar .recent .recentChats p {
+  border-radius: 2rem;
+  padding: 0.85rem;
+  margin-left: -0.85rem;
+  cursor: pointer;
+}
+
+/* Bottom Section */
+.Sidebar .bottom {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  gap: 0.85rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  margin-top: auto;
+}
+.Sidebar .bottom img {
+  width: 1.2rem;
+}
+
+.newChat:hover,
+.exploreGems:hover,
+.Sidebar .recentChats p:hover,
+.Sidebar .bottom:hover {
+  background-color: #e4e8ed;
+}

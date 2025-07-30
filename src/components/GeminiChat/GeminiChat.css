@@ -1,0 +1,51 @@
+.GeminiChat {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.topContainer {
+  padding: 0.5rem 1rem;
+}
+
+.topContainer h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #575b5f;
+  margin-bottom: 0.4rem;
+}
+
+.topContainer .model {
+  display: inline-flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2rem;
+  background-color: #f0f4f9;
+  color: #575b5f;
+  font-weight: 600;
+}
+
+.topContainer .model img {
+  height: 1rem;
+}
+
+.middleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  width: 90vh;
+  margin: 0 auto;
+}
+
+.bottomContainer {
+  background-color: skyblue;
+  flex-grow: 1;
+}
+
+.chatBox .submit img {
+  width: 1.5rem;
+}
