@@ -5,7 +5,7 @@
   padding: 1.2rem;
   min-height: 100vh;
   width: 22.5rem;
-  background-color: #f0f4f9;
+  background-color: #e9eef6;
   color: #575b5f;
   opacity: 1;
 }
@@ -35,7 +35,7 @@
   width: 1.2rem;
 }
 .icon-container:hover {
-  background-color: #e4e8ed;
+  background-color: #d7dadf;
 }
 
 /* Top Secondary */
@@ -101,5 +101,5 @@
 .exploreGems:hover,
 .Sidebar .recentChats p:hover,
 .Sidebar .bottom:hover {
-  background-color: #e4e8ed;
+  background-color: #d7dadf;
 }
