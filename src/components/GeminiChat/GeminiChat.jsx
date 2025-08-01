@@ -1,12 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./GeminiChat.css";
 import { assets } from "../../assets/assets";
 import { MyContext } from "../../context/Context";
 import Loader from "./Loader";
 
 export default function GeminiChat() {
-  const { main, response, setResponse, loader, setLoader } =
-    useContext(MyContext);
+  const {
+    main,
+    response,
+    setResponse,
+    loader,
+    setLoader,
+    chatArr,
+    setChatArr,
+  } = useContext(MyContext);
 
   const [input, setInput] = useState("");
   const [query, setQuery] = useState("");
@@ -21,6 +28,9 @@ export default function GeminiChat() {
 
     const res = await main(currInput);
     setResponse(res);
+
+    setChatArr((prev) => [...prev, { question: currInput, answer: res }]);
+
     setLoader(false);
   };
 
@@ -50,6 +60,19 @@ export default function GeminiChat() {
           </div>
         )}
 
+        {chatArr &&
+          chatArr.map((chat, idx) => (
+            <div key={idx} className="queryAndResponse">
+              <div className="query">
+                <p>{chat.question}</p>
+              </div>
+
+              <div className="response">
+                <p>{chat.answer}</p>
+              </div>
+            </div>
+          ))}
+
         {query && loader && (
           <div className="queryAndLoader">
             <div>
@@ -58,18 +81,6 @@ export default function GeminiChat() {
 
             <div className="query">
               <p>{query}</p>
-            </div>
-          </div>
-        )}
-
-        {response && (
-          <div className="queryAndResponse">
-            <div className="query">
-              <p>{query}</p>
-            </div>
-
-            <div className="response">
-              <p>{response}</p>
             </div>
           </div>
         )}
@@ -109,6 +120,17 @@ export default function GeminiChat() {
           </form>
         </div>
       </div>
+
+      <p
+        style={{
+          textAlign: "center",
+          margin: "0.7rem",
+          fontSize: "0.7rem",
+          color: "#575b5f",
+        }}
+      >
+        Gemini can make mistakes, so double-check it
+      </p>
     </div>
   );
 }

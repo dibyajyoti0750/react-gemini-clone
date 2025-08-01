@@ -43,11 +43,9 @@ export default function Sidebar() {
 
           <div className="recentChats">
             <p title="Docker: Containerization Explanation">
-              Docker: Containerization Ex...
+              Docker: Containeri...
             </p>
-            <p title="Describe this image as a prompt">
-              Describe this image as a pr...
-            </p>
+            <p title="Describe this image as a prompt">Describe this imag...</p>
           </div>
         </div>
       ) : null}
