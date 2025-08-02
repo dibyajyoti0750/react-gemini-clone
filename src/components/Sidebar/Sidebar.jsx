@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../../assets/assets";
 import "./Sidebar.css";
+import { MyContext } from "../../context/Context";
 
 export default function Sidebar() {
   const [collapse, setCollapse] = useState(true);
+  const { chatArr } = useContext(MyContext);
 
   return (
     <div className={`Sidebar ${collapse ? "collapsed" : ""}`}>
@@ -42,10 +44,12 @@ export default function Sidebar() {
           <div className="recentTitle">Recent</div>
 
           <div className="recentChats">
-            <p title="Docker: Containerization Explanation">
-              Docker: Containeri...
-            </p>
-            <p title="Describe this image as a prompt">Describe this imag...</p>
+            {chatArr.map((chat) => (
+              <p title={chat.question}>
+                {chat.question.slice(0, 20)}
+                {chat.question.length > 20 ? "..." : ""}
+              </p>
+            ))}
           </div>
         </div>
       ) : null}

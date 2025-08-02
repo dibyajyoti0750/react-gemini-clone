@@ -25,8 +25,8 @@ export default function GeminiChat() {
 
   const getResponse = async () => {
     if (!input.trim()) return;
-    let currInput = input;
 
+    let currInput = input;
     setQuery(currInput);
     setLoader(true);
     setInput("");
@@ -62,7 +62,10 @@ export default function GeminiChat() {
         {chatArr &&
           chatArr.map((chat, idx) => (
             <div key={idx} className="queryAndResponse">
-              <div className="query">
+              <div
+                className="query"
+                style={chat.question.length > 30 ? { width: "25rem" } : null}
+              >
                 <p>{chat.question}</p>
               </div>
 

@@ -21,7 +21,6 @@ export async function main(prompt) {
       result += chunk.text;
     }
 
-    console.log(result);
     return result;
   } catch (err) {
     console.error(err);
