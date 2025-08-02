@@ -3,7 +3,7 @@ import { GoogleGenAI } from "@google/genai";
 export async function main(prompt) {
   try {
     const ai = new GoogleGenAI({
-      apiKey: "AIzaSyAyRsCnNX7UFUDL2pT3lvBuWW0NAj6Zqaw",
+      apiKey: "",
     });
     const tools = [{ googleSearch: {} }];
     const config = { thinkingConfig: { thinkingBudget: -1 }, tools };
