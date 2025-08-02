@@ -5,6 +5,7 @@ import { MyContext } from "../../context/Context";
 import Loader from "./Loader";
 import Navbar from "./Navbar";
 import SkeletonLoader from "./SkeletonLoader";
+import ReactMarkdown from "react-markdown";
 
 export default function GeminiChat() {
   const bottomRef = useRef(null);
@@ -39,7 +40,7 @@ export default function GeminiChat() {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [query, response]);
+  }, [query]);
 
   return (
     <div className="GeminiChat">
@@ -66,7 +67,7 @@ export default function GeminiChat() {
               </div>
 
               <div className="response">
-                <p>{chat.answer}</p>
+                <ReactMarkdown>{chat.answer}</ReactMarkdown>
               </div>
             </div>
           ))}

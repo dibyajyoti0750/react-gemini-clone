@@ -55,6 +55,27 @@
   padding: 2rem;
 }
 
+.response p {
+  margin-bottom: 1.5rem;
+}
+
+.response ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.response li {
+  margin-bottom: 0.5rem;
+}
+
+.response strong {
+  font-weight: bold;
+}
+
+.response h3 {
+  font-size: 1.4rem;
+}
+
 .middleContainer .greet h1 {
   font-size: 2rem;
   font-weight: 550;
