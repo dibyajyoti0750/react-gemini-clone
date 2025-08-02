@@ -1,0 +1,35 @@
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.topContainer h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #575b5f;
+  margin-bottom: 0.4rem;
+}
+
+.topContainer .model {
+  display: inline-flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2rem;
+  background-color: #e9eef6;
+  color: #575b5f;
+  font-weight: 600;
+}
+
+.topContainer .model img {
+  height: 1rem;
+}
+
+.topContainer .profilePic {
+  width: 2.2rem;
+  border-radius: 50%;
+}

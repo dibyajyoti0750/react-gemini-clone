@@ -1,10 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./GeminiChat.css";
 import { assets } from "../../assets/assets";
 import { MyContext } from "../../context/Context";
 import Loader from "./Loader";
+import Navbar from "./Navbar";
+import SkeletonLoader from "./SkeletonLoader";
 
 export default function GeminiChat() {
+  const bottomRef = useRef(null);
+
   const {
     main,
     response,
@@ -19,6 +23,7 @@ export default function GeminiChat() {
   const [query, setQuery] = useState("");
 
   const getResponse = async () => {
+    if (!input.trim()) return;
     let currInput = input;
 
     setQuery(currInput);
@@ -28,24 +33,17 @@ export default function GeminiChat() {
 
     const res = await main(currInput);
     setResponse(res);
-
     setChatArr((prev) => [...prev, { question: currInput, answer: res }]);
-
     setLoader(false);
   };
 
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [query, response]);
+
   return (
     <div className="GeminiChat">
-      <div className="topContainer">
-        <div>
-          <h1>Gemini</h1>
-          <div className="model">
-            <span>2.5 Pro</span> <img src={assets.down} alt="Down arrow" />
-          </div>
-        </div>
-
-        <img className="profilePic" src={assets.user} alt="Gemini Account" />
-      </div>
+      <Navbar />
 
       <div
         className={
@@ -84,6 +82,9 @@ export default function GeminiChat() {
             </div>
           </div>
         )}
+
+        {query && loader && <SkeletonLoader />}
+        <div ref={bottomRef}></div>
       </div>
 
       <div className="bottomContainer">
@@ -91,7 +92,6 @@ export default function GeminiChat() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              if (!input.trim()) return;
             }}
           >
             <input
@@ -103,16 +103,13 @@ export default function GeminiChat() {
             />
 
             <div
+              onClick={getResponse}
               style={input ? { backgroundColor: "#e4e8ed" } : null}
               className="buttons"
+              title={input ? "Submit" : "Use microphone"}
             >
               {input ? (
-                <img
-                  onClick={getResponse}
-                  src={assets.send}
-                  alt="Submit"
-                  title="Submit"
-                />
+                <img src={assets.send} alt="Submit" title="Submit" />
               ) : (
                 <img src={assets.mic} alt="Microphone" title="Use microphone" />
               )}
