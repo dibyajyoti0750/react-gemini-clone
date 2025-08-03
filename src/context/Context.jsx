@@ -7,6 +7,7 @@ export const MyProvider = ({ children }) => {
   const [input, setInput] = useState("");
   const [query, setQuery] = useState("");
   const [chatArr, setChatArr] = useState([]);
+  const [chatHistory, setChatHistory] = useState([]);
   const [loader, setLoader] = useState(false);
 
   const contextValue = {
@@ -19,6 +20,8 @@ export const MyProvider = ({ children }) => {
     setInput,
     query,
     setQuery,
+    chatHistory,
+    setChatHistory,
   };
 
   return (

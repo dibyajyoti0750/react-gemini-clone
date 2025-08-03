@@ -50,13 +50,13 @@ export default function GeminiChat() {
             : "middleContainer centerAlign"
         }
       >
-        {!query && !loader && chatArr.every((chat) => !chat.answer) && (
+        {!query && !loader && (
           <div className="greet">
             <h1>Hello, Dibyajyoti</h1>
           </div>
         )}
 
-        {chatArr &&
+        {chatArr.length > 0 &&
           chatArr
             .filter((chat) => chat.question && chat.answer)
             .map((chat, idx) => (

@@ -5,12 +5,14 @@ import { MyContext } from "../../context/Context";
 
 export default function Sidebar() {
   const [collapse, setCollapse] = useState(true);
-  const { chatArr, setChatArr } = useContext(MyContext);
+  const { chatArr, setChatArr, chatHistory, setChatHistory, setQuery } =
+    useContext(MyContext);
 
   const setNewChat = () => {
-    setChatArr((prev) =>
-      prev.map((chat) => ({ question: chat.question, answer: "" }))
-    );
+    const questions = chatArr.map((chat) => chat.question).reverse();
+    setChatHistory((prev) => [...questions, ...prev]);
+    setChatArr([]);
+    setQuery("");
   };
 
   return (
@@ -51,10 +53,21 @@ export default function Sidebar() {
 
           <div className="recentChats">
             {chatArr &&
-              chatArr.map((chat, idx) => (
-                <p key={idx} title={chat.question}>
-                  {chat.question.slice(0, 20)}
-                  {chat.question.length > 20 ? "..." : ""}
+              chatArr
+                .slice() // makes a shallow copy, or else reverse will modify chatArr itself
+                .reverse() // works on that copy
+                .map((chat, idx) => (
+                  <p key={idx} title={chat.question}>
+                    {chat.question.slice(0, 20)}
+                    {chat.question.length > 20 ? "..." : ""}
+                  </p>
+                ))}
+
+            {chatHistory &&
+              chatHistory.map((question, idx) => (
+                <p key={idx} title={question}>
+                  {question.slice(0, 20)}
+                  {question.length > 20 ? "..." : ""}
                 </p>
               ))}
           </div>
