@@ -5,7 +5,13 @@ import { MyContext } from "../../context/Context";
 
 export default function Sidebar() {
   const [collapse, setCollapse] = useState(true);
-  const { chatArr } = useContext(MyContext);
+  const { chatArr, setChatArr } = useContext(MyContext);
+
+  const setNewChat = () => {
+    setChatArr((prev) =>
+      prev.map((chat) => ({ question: chat.question, answer: "" }))
+    );
+  };
 
   return (
     <div className={`Sidebar ${collapse ? "collapsed" : ""}`}>
@@ -26,7 +32,7 @@ export default function Sidebar() {
       </div>
 
       <div onMouseEnter={() => setCollapse(false)} className="secondary">
-        <div title="New chat" className="newChat">
+        <div onClick={setNewChat} title="New chat" className="newChat">
           <img src={assets.newChat} alt="New chat" />
           {!collapse ? <p>New chat</p> : null}
         </div>
@@ -44,12 +50,13 @@ export default function Sidebar() {
           <div className="recentTitle">Recent</div>
 
           <div className="recentChats">
-            {chatArr.map((chat) => (
-              <p title={chat.question}>
-                {chat.question.slice(0, 20)}
-                {chat.question.length > 20 ? "..." : ""}
-              </p>
-            ))}
+            {chatArr &&
+              chatArr.map((chat, idx) => (
+                <p key={idx} title={chat.question}>
+                  {chat.question.slice(0, 20)}
+                  {chat.question.length > 20 ? "..." : ""}
+                </p>
+              ))}
           </div>
         </div>
       ) : null}

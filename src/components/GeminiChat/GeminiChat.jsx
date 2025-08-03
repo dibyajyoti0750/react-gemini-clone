@@ -12,16 +12,15 @@ export default function GeminiChat() {
 
   const {
     main,
-    response,
-    setResponse,
+    input,
+    setInput,
+    query,
+    setQuery,
     loader,
     setLoader,
     chatArr,
     setChatArr,
   } = useContext(MyContext);
-
-  const [input, setInput] = useState("");
-  const [query, setQuery] = useState("");
 
   const getResponse = async () => {
     if (!input.trim()) return;
@@ -30,10 +29,8 @@ export default function GeminiChat() {
     setQuery(currInput);
     setLoader(true);
     setInput("");
-    setResponse("");
 
     const res = await main(currInput);
-    setResponse(res);
     setChatArr((prev) => [...prev, { question: currInput, answer: res }]);
     setLoader(false);
   };
@@ -48,32 +45,34 @@ export default function GeminiChat() {
 
       <div
         className={
-          loader || response
+          loader || chatArr.some((chat) => chat.answer)
             ? "middleContainer startAlign"
             : "middleContainer centerAlign"
         }
       >
-        {!query && !loader && !response && (
+        {!query && !loader && chatArr.every((chat) => !chat.answer) && (
           <div className="greet">
             <h1>Hello, Dibyajyoti</h1>
           </div>
         )}
 
         {chatArr &&
-          chatArr.map((chat, idx) => (
-            <div key={idx} className="queryAndResponse">
-              <div
-                className="query"
-                style={chat.question.length > 30 ? { width: "25rem" } : null}
-              >
-                <p>{chat.question}</p>
-              </div>
+          chatArr
+            .filter((chat) => chat.question && chat.answer)
+            .map((chat, idx) => (
+              <div key={idx} className="queryAndResponse">
+                <div
+                  className="query"
+                  style={chat.question.length > 30 ? { width: "25rem" } : null}
+                >
+                  <p>{chat.question}</p>
+                </div>
 
-              <div className="response">
-                <ReactMarkdown>{chat.answer}</ReactMarkdown>
+                <div className="response">
+                  <ReactMarkdown>{chat.answer}</ReactMarkdown>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
 
         {query && loader && (
           <div className="queryAndLoader">
