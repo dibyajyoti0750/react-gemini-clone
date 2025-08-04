@@ -107,7 +107,10 @@ export default function GeminiChat() {
 
             <div
               onClick={getResponse}
-              style={input ? { backgroundColor: "#e4e8ed" } : null}
+              style={{
+                ...(input && { backgroundColor: "#e4e8ed" }),
+                ...(loader && { pointerEvents: "none", opacity: 0.5 }),
+              }}
               className="buttons"
               title={input ? "Submit" : "Use microphone"}
             >
