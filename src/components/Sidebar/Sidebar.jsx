@@ -18,7 +18,7 @@ export default function Sidebar() {
   return (
     <div className={`Sidebar ${collapse ? "collapsed" : ""}`}>
       <div className="top">
-        <div className="icon-container">
+        <div className="icon-container menu">
           <img
             onClick={() => setCollapse((prev) => !prev)}
             title={collapse ? "Expand menu" : "Collapse menu"}

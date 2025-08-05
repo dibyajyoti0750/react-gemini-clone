@@ -33,3 +33,9 @@
   width: 2.2rem;
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 640px) {
+  .topContainer {
+    padding-left: 5rem;
+  }
+}

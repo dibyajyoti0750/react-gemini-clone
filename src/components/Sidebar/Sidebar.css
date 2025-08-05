@@ -103,3 +103,23 @@
 .Sidebar .bottom:hover {
   background-color: #d7dadf;
 }
+
+@media only screen and (max-width: 640px) {
+  .Sidebar {
+    position: absolute;
+    width: 70dvw;
+  }
+
+  .Sidebar.collapsed {
+    position: absolute;
+    background-color: transparent;
+  }
+
+  .Sidebar.collapsed .secondary .newChat {
+    display: none;
+  }
+
+  .Sidebar.collapsed .bottom {
+    display: none;
+  }
+}
