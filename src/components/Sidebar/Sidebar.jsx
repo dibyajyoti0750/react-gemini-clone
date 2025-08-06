@@ -5,7 +5,7 @@ import { MyContext } from "../../context/Context";
 
 export default function Sidebar() {
   const [collapse, setCollapse] = useState(true);
-  const { chatArr, setChatArr, chatHistory, setChatHistory, setQuery } =
+  const { chatArr, setChatArr, chatHistory, setChatHistory, setQuery, main } =
     useContext(MyContext);
 
   const setNewChat = () => {

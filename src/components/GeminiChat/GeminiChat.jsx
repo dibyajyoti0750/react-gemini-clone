@@ -61,10 +61,7 @@ export default function GeminiChat() {
             .filter((chat) => chat.question && chat.answer)
             .map((chat, idx) => (
               <div key={idx} className="queryAndResponse">
-                <div
-                  className="query"
-                  style={chat.question.length > 30 ? { width: "25rem" } : null}
-                >
+                <div className="query">
                   <p>{chat.question}</p>
                 </div>
 
@@ -99,8 +96,11 @@ export default function GeminiChat() {
           >
             <input
               placeholder="Ask Gemini"
-              onChange={(e) => {
-                setInput(e.target.value);
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && input) {
+                  getResponse();
+                }
               }}
               value={input}
             />

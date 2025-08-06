@@ -3,7 +3,7 @@ import { GoogleGenAI } from "@google/genai";
 export async function main(prompt) {
   try {
     const ai = new GoogleGenAI({
-      apiKey: "",
+      apiKey: import.meta.env.VITE_GEMINI_API_KEY,
     });
     const tools = [{ googleSearch: {} }];
     const config = { thinkingConfig: { thinkingBudget: -1 }, tools };
