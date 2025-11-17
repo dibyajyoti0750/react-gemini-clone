@@ -95,7 +95,7 @@ export default function GeminiChat() {
             }}
           >
             <input
-              placeholder="Ask Gemini"
+              placeholder="Ask Geminic"
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" && input) {

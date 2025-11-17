@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div className="topContainer">
       <div>
-        <h1>Gemini</h1>
+        <h1>Geminic</h1>
         <div className="model">
           <span>2.5 Pro</span> <img src={assets.down} alt="Down arrow" />
         </div>
